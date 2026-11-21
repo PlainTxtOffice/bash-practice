@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-11-15 -->
+<!-- last_updated: 2026-11-21 -->
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
@@ -10,6 +10,12 @@
 <p align="center">
   An Android app that helps command-line beginners learn everyday bash commands
   and operators and test themselves with quick quizzes.
+</p>
+
+<p align="center">
+  <a href="https://play.google.com/store/apps/details?id=com.plaintxtoffice.bashpractice"><img src="https://img.shields.io/badge/release-Google%20Play-blue" alt="Android release: Google Play"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Proprietary-informational" alt="License: Proprietary"></a>
+  <a href="docs/USER_MANUAL.md"><img src="https://img.shields.io/badge/platform-Android-3DDC84" alt="Platform: Android"></a>
 </p>
 <!-- rumdl-enable MD033 MD041 -->
 
