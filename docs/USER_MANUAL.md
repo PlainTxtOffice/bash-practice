@@ -1,9 +1,9 @@
 ---
-last_updated: 2026-11-20
-version: 5.8.0
+last_updated: 2026-11-22
+version: 5.10.0
 product_versions:
-  android: "1.0.0"
-  ios: "1.0.0"
+  android: "1.1.0"
+  ios: "1.1.0"
 generated_from: "dev-docs/specs/USER_MANUAL_SPEC.instructions.md"
 ---
 
@@ -22,9 +22,9 @@ follow your progress.
 
 | Item | Details |
 | --- | --- |
-| Platform | Android, on phones and tablets |
-| Interface | Touch interface with three tabs: **Learn**, **Practice**, and **Progress** |
-| Version | 1.0.0 |
+| Platform | Android phones and tablets; iPhone and iPad |
+| Interface | Four tabs for **Learn**, **Practice**, **Progress**, and **Docs** |
+| Version | 1.1.0 on Android. On iOS, 1.0.0 is on the App Store and 1.1.0 is waiting for App Review |
 
 <!-- Verified from: platform/android/app/build.gradle.kts [versionName, minSdk] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [HomeTab, HomeRoute] -->
@@ -38,14 +38,37 @@ checks your quiz answers on the device.
 
 ### iOS
 
-Bash Practice 1.0.0 for iPhone and iPad requires iOS 17 or later. Its
-**Learn**, **Practice**, and **Progress** tabs provide the command library,
-multiple-choice and typed quizzes, and on-device progress tracking. The local
-Xcode project can be run on a simulator or installed on a device with signing
-configured.
+Bash Practice 1.1.0 for iPhone and iPad requires iOS 17 or later. Its
+**Learn**, **Practice**, **Progress**, and **Docs** tabs provide the command
+library, multiple-choice and typed quizzes, pipeline practice, a practice
+terminal, on-device progress tracking, and guides. Install it free from the
+[App Store](https://apps.apple.com/app/id6837567763). The App Store has
+version 1.0.0; version 1.1.0, described here, is waiting for App Review.
+
+On iOS, each example on a command's page shows its **Output**: what the
+terminal prints when you run it, or a note that it prints nothing. The output
+is a recorded sample; the app never runs commands.
+
+The **Docs** tab holds short guides: **Command Conventions**, **Paths and
+Wildcards**, **Quoting and Variables**, **Piping Techniques**, **Redirection**,
+and **Exit Status and Chaining**. Each has worked examples with their output.
+Its **About** section, at the end, opens **Privacy** and **Send Feedback** and
+shows the app version. iOS has no **More options** menu.
+
+To use the practice terminal, open **Practice**, tap **Practice Terminal**, type
+an example from a command page or a guide, and press Return. The terminal shows
+that example's recorded output. For a command it knows but an example it
+doesn't, it lists that command's examples to tap; **Try an Example** fills in a
+random one, and `clear` or **Clear Screen** empties the screen. Nothing you type
+is run.
 
 <!-- Verified from: platform/ios/bash-practice.xcodeproj/project.pbxproj [MARKETING_VERSION, IPHONEOS_DEPLOYMENT_TARGET, TARGETED_DEVICE_FAMILY] -->
 <!-- Verified from: platform/ios/bash-practice/Views/PracticeTabs.swift [PracticeTabs] -->
+<!-- Verified from: platform/ios/bash-practice/Views/ExampleRow.swift [ExampleRow, ExampleOutput] -->
+<!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [DocsView, GuideView] -->
+<!-- Verified from: platform/ios/bash-practice/guides.json -->
+<!-- Verified from: platform/ios/bash-practice/Views/TerminalView.swift [TerminalView] -->
+<!-- Verified from: platform/ios/bash-practice/Practice/PracticeTerminal.swift [PracticeTerminal.reply] -->
 
 ## Installation and Setup
 
@@ -53,8 +76,8 @@ configured.
 
 | Requirement | Details |
 | --- | --- |
-| Device | Android phone or tablet |
-| Operating system | Android 8.0 or later |
+| Device | Android phone or tablet, or iPhone or iPad |
+| Operating system | Android 8.0 or later, or iOS 17 or later |
 | Account or sign-in | None required |
 | Internet connection | Not required to learn or practice |
 
@@ -68,7 +91,15 @@ Install Bash Practice from
 [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.bashpractice).
 It is free and needs no account.
 
-<!-- Verified from: platform/android/app/build.gradle.kts [versionCode = 1] -->
+<!-- Verified from: platform/android/app/build.gradle.kts [applicationId] -->
+
+### Install on iOS
+
+Install Bash Practice on your iPhone or iPad from the
+[App Store](https://apps.apple.com/app/id6837567763). It is free and needs no
+account.
+
+<!-- Verified from: platform/ios/bash-practice.xcodeproj/project.pbxproj [PRODUCT_BUNDLE_IDENTIFIER, IPHONEOS_DEPLOYMENT_TARGET] -->
 
 ### Set Up the App
 
@@ -99,14 +130,15 @@ you go.
 
 ## Getting Around
 
-The app has three tabs. On a phone they appear in a bar at the bottom of the
-screen; on a tablet or other wide window they appear in a rail at the side.
+The Android app has four tabs. On a phone they appear in a bar at the bottom of
+the screen; on a tablet or other wide window they appear in a rail at the side.
 
 | Tab | What you find there |
 | --- | --- |
 | **Learn** | The command library, grouped by category, with a search field |
-| **Practice** | Quiz options and the **Start Quiz** button |
+| **Practice** | Command quizzes, pipeline exercises, and the **Practice Terminal** |
 | **Progress** | Your learned count, quiz accuracy, progress by category, commands that need review, and **Reset All Progress** |
+| **Docs** | Six guides with worked examples, plus privacy information, feedback, and the app version under **About** |
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [NavigationSuiteScaffold, HomeTab] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/learn/LearnScreen.kt [LearnScreen] -->
@@ -173,7 +205,8 @@ The detail screen for a command shows:
 - **Syntax**, showing its common options.
 - **Also written as**, when bash accepts another spelling, such as `.` for
   `source`.
-- **Examples**, each with an explanation.
+- **Examples**, each with an explanation and its recorded **Output**. A silent
+  example displays a note explaining that the command prints nothing on success.
 - **Tip**, for some commands.
 - **Quiz record: X of Y correct**, after you have answered quiz questions
   about it.
@@ -254,7 +287,10 @@ progress bar. Each question is one of two kinds:
 
 When the answer is an operator, the question says **operator** instead of
 **command**. In a **Multiple Choice** quiz, the other three choices come from
-the same category when possible.
+the same category when possible. Android task questions use examples led by the
+answer or its other spelling. For an operator task, fill the blank in the
+displayed command. Choices exclude other commands in that example and known
+equivalent answers.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Quiz.kt [QuestionKind, QuizBuilder] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [questionHeading] -->
@@ -313,6 +349,32 @@ with its summary. Tap **Done** to return to the **Practice** tab.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [QuizResults] -->
 
+### Read a Guide on Android
+
+Open **Docs** and choose a guide. The guides cover command conventions, paths
+and wildcards, quoting and variables, piping, redirection, and exit status and
+chaining. Each section explains a technique and shows worked examples. Tap
+**Copy** beside an example to put the command on the clipboard.
+
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [GuideScreen] -->
+
+### Use the Practice Terminal on Android
+
+1. Open **Practice** and tap **Practice Terminal**.
+1. Type an example from **Learn** or **Docs**, such as `pwd`, or tap
+   **Try an Example** to fill in a random one.
+1. Tap **Run** or press the keyboard’s Go key. For `pwd`, the recorded output is
+   `/home/alex/projects/site`.
+1. If you enter a known command with different arguments, tap one of its
+   suggested examples, then tap **Run**.
+1. Tap **Clear Screen** or enter `clear` to clear the transcript.
+
+The terminal looks up examples on the device. It never executes input or changes
+files.
+
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/PracticeTerminal.kt [reply] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/terminal/TerminalScreen.kt [TerminalScreen] -->
+
 ### Practice Pipelines
 
 A pipeline joins commands with `|` so that each one works on the output of
@@ -370,7 +432,7 @@ the app shows **Couldn't reset progress** and leaves your progress unchanged.
 
 ### Send Feedback
 
-Use **Send feedback** to report a bug or ask for a feature.
+Use **Send feedback** to report a bug or ask for a feature. On Android:
 
 1. On any tab, tap **More options** (three dots) at the top right.
 1. Tap **Send feedback**.
@@ -386,8 +448,20 @@ is sent unless you send it. **Send by email** is unavailable until you type
 some details. If you have no email app, tap **Use the contact page instead**
 to open the developer's website.
 
+On iOS, open **Docs** and tap **Send Feedback** in the **About** section.
+**Report a Problem** and **Suggest a Feature** open a new email to
+`support@plaintxtoffice.com` in your mail app, and **Contact Plain Text
+Office** opens the contact page. In version 1.0.0, **Send Feedback** is in
+**More options** on each tab.
+
+You can also email
+[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com) directly, use
+the [contact page](https://plaintxtoffice.com/contact/), or open an issue in
+[GitHub Issues](https://github.com/PlainTxtOffice/bash-practice/issues).
+
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackScreen.kt [FeedbackRoute, FeedbackScreen] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [FEEDBACK_ADDRESS, openFeedbackEmail, deviceSummary] -->
+<!-- Verified from: platform/ios/bash-practice/Views/FeedbackView.swift [FeedbackView] -->
 
 ### Read the Privacy Information
 
@@ -398,12 +472,18 @@ to open the developer's website.
 1. To contact the developer, tap **Contact Plain Text Office**. This opens the
    developer's website.
 
+You can also open **Privacy** from **Docs** under **About**. Use
+**Full Privacy Policy** to read the published policy in your browser or
+**Send feedback** to open the feedback form.
+
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/privacy/PrivacyScreen.kt [PrivacyScreen] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [openContactPage] -->
 
-On iOS, tap **Privacy Policy** at the end of the privacy information to read the
-full privacy policy on the developer's website. **Contact Plain Text Office** is
-under **Send Feedback** instead.
+On iOS, open **Docs** and tap **Privacy** in the **About** section. The
+privacy information shows the names of buttons in bold. At the end, **Send
+Feedback** opens the feedback options, **Contact Plain Text Office** opens the
+developer's website, and **Full Privacy Policy** opens the full privacy policy
+there.
 
 <!-- Verified from: platform/ios/bash-practice/Views/PrivacyView.swift [PrivacyView] -->
 <!-- Verified from: platform/ios/bash-practice/Views/FeedbackView.swift [FeedbackView] -->
@@ -425,11 +505,12 @@ actions.
 
 | Control | Where | What it does |
 | --- | --- | --- |
-| **Learn**, **Practice**, **Progress** | Bottom bar or side rail | Switch between the main screens |
+| **Learn**, **Practice**, **Progress**, **Docs** | Bottom bar or side rail | Switch between the main screens |
 | **More options** (three dots) | Each tab, top right | Opens **Privacy** and **Send feedback** |
 | Search field | **Learn** | Filters commands by name, other spelling, or description |
 | **Copy** | Command detail | Copies the syntax or an example to the clipboard |
 | **Mark as Learned** / **Learned** | Command detail | Marks or unmarks the command as learned |
+| **Practice Terminal** | **Practice** | Looks up the recorded output of a command or guide example |
 | **Start Quiz** | **Practice** | Starts a quiz with the chosen options |
 | **Check** | Quiz, **Type the Command** | Checks your typed answer |
 | **Next Question** / **See Results** | Quiz | Moves to the next question or the results |
@@ -513,9 +594,10 @@ the examples in a terminal on Linux, macOS, or another system with bash.
 
 ### Do I need an internet connection?
 
-No. The command library is included with the app, and answers are checked on
-the device. Only **Contact Plain Text Office** and **Use the contact page
-instead** open a website, and **Send by email** opens your email app.
+No. The command library is included with the app, and answers are checked on the
+device. **Contact Plain Text Office**, **Use the contact page instead**, and
+**Full Privacy Policy** open your browser. **Send by email** opens your email
+app.
 
 <!-- Verified from: platform/android/app/src/main/AndroidManifest.xml [no INTERNET permission] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [openContactPage, openFeedbackEmail] -->
