@@ -41,7 +41,7 @@ checks your quiz answers on the device.
 Bash Practice 1.1.0 for iPhone and iPad requires iOS 17 or later. Its
 **Learn**, **Practice**, **Progress**, and **Docs** tabs provide the command
 library, multiple-choice and typed quizzes, pipeline practice, a practice
-terminal, on-device progress tracking, and guides. Install it free from the
+terminal, on-device progress tracking, and guides. Install it from the
 [App Store](https://apps.apple.com/app/id6837567763). The App Store has
 version 1.0.0; version 1.1.0, described here, is waiting for App Review.
 
@@ -89,15 +89,14 @@ is run.
 
 Install Bash Practice from
 [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.bashpractice).
-It is free and needs no account.
+It needs no account.
 
 <!-- Verified from: platform/android/app/build.gradle.kts [applicationId] -->
 
 ### Install on iOS
 
 Install Bash Practice on your iPhone or iPad from the
-[App Store](https://apps.apple.com/app/id6837567763). It is free and needs no
-account.
+[App Store](https://apps.apple.com/app/id6837567763). It needs no account.
 
 <!-- Verified from: platform/ios/bash-practice.xcodeproj/project.pbxproj [PRODUCT_BUNDLE_IDENTIFIER, IPHONEOS_DEPLOYMENT_TARGET] -->
 

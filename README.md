@@ -2,7 +2,7 @@
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
-  <img src="assets/icons/bash-practice.svg" alt="Bash Practice icon: a white and green shebang, #!, on dark green" width="96">
+  <img src="assets/icons/icon-github-readme.svg" alt="Bash Practice icon: a white and green shebang, #!, on dark green" width="96">
 </p>
 
 <h1 align="center">Bash Practice</h1>
@@ -77,8 +77,8 @@ The **Learn** tab and a quiz question on Android.
 
 | Platform | Download | Notes |
 | --- | --- | --- |
-| Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.bashpractice) | Free. Version 1.1.0. Requires Android 8.0 or later. |
-| iOS | [App Store](https://apps.apple.com/app/id6837567763) | Free. Version 1.0.0; 1.1.0, with the guides and the practice terminal, is waiting for App Review. Requires iOS 17 or later on iPhone or iPad. |
+| Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.bashpractice) | Version 1.1.0. Requires Android 8.0 or later. |
+| iOS | [App Store](https://apps.apple.com/app/id6837567763) | Version 1.0.0; 1.1.0, with the guides and the practice terminal, is waiting for App Review. Requires iOS 17 or later on iPhone or iPad. |
 
 ## User Manual
 
