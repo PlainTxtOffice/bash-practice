@@ -1,6 +1,6 @@
 ---
 last_updated: 2026-11-22
-version: 5.10.0
+version: 6.0.0
 product_versions:
   android: "1.1.0"
   ios: "1.1.0"
@@ -429,39 +429,6 @@ the app shows **Couldn't reset progress** and leaves your progress unchanged.
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/stats/StatsScreen.kt [confirmingReset, AlertDialog] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/stats/StatsViewModel.kt [canReset, reset] -->
 
-### Send Feedback
-
-Use **Send feedback** to report a bug or ask for a feature. On Android:
-
-1. On any tab, tap **More options** (three dots) at the top right.
-1. Tap **Send feedback**.
-1. Choose **Bug report** or **Feature request**.
-1. Describe the problem or idea in **Details**.
-1. Tap **Send by email**. Your email app opens with a draft to
-   `support@plaintxtoffice.com`.
-1. Review the draft and send it from your email app.
-
-The draft includes what you typed plus the app version, Android version, and
-device model. It never includes your learned commands or quiz answers. Nothing
-is sent unless you send it. **Send by email** is unavailable until you type
-some details. If you have no email app, tap **Use the contact page instead**
-to open the developer's website.
-
-On iOS, open **Docs** and tap **Send Feedback** in the **About** section.
-**Report a Problem** and **Suggest a Feature** open a new email to
-`support@plaintxtoffice.com` in your mail app, and **Contact Plain Text
-Office** opens the contact page. In version 1.0.0, **Send Feedback** is in
-**More options** on each tab.
-
-You can also email
-[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com) directly, use
-the [contact page](https://plaintxtoffice.com/contact/), or open an issue in
-[GitHub Issues](https://github.com/PlainTxtOffice/bash-practice/issues).
-
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackScreen.kt [FeedbackRoute, FeedbackScreen] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [FEEDBACK_ADDRESS, openFeedbackEmail, deviceSummary] -->
-<!-- Verified from: platform/ios/bash-practice/Views/FeedbackView.swift [FeedbackView] -->
-
 ### Read the Privacy Information
 
 1. On any tab, tap **More options** (three dots) at the top right.
@@ -534,10 +501,11 @@ open or edit these records by hand, and the app does not show their location.
 | Data | Where it is stored | Can you edit it? |
 | --- | --- | --- |
 | Command library | Included with the app | No |
-| Learned commands and quiz answers for each command | The app's private storage on your device; exact location Unknown. | No; change it through the app |
+| Learned commands and quiz answers for each command | The app's private storage on your device: the `progress.db` database on Android and `progress.json` on iPhone and iPad (see below) | No; change it through the app |
 
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/di/AppModule.kt [database] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/di/AppModule.kt [database, Room.databaseBuilder "progress.db"] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/data/CommandProgress.kt [CommandProgress] -->
+<!-- Verified from: platform/ios/bash-practice/Progress/ProgressFile.swift [fileURL] -->
 
 To remove your records, use **Reset All Progress**, clear the app's storage
 in Android Settings, or uninstall the app. Device backups may keep earlier
@@ -631,6 +599,49 @@ No. This version contains no developer-run analytics, advertising, or account
 service.
 
 <!-- Verified from: platform/android/app/src/main/res/values/strings.xml [privacy_services_body] -->
+
+## Feedback
+
+To report a bug or request a feature, email
+[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com), use the
+contact page at <https://plaintxtoffice.com/contact/>, or use the feedback
+screen in the app:
+
+| Platform | How to open feedback |
+| --- | --- |
+| Android | On any tab, tap **More options** (three dots) at the top right, then **Send feedback**. |
+| iOS | Open **Docs** and tap **Send Feedback** in the **About** section. In version 1.0.0, tap **More options** on any tab, then **Send Feedback**. |
+
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [FEEDBACK_ADDRESS, openContactPage] -->
+<!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [Send Feedback] -->
+
+### Send Feedback from the App
+
+On Android:
+
+1. On any tab, tap **More options** (three dots) at the top right.
+1. Tap **Send feedback**.
+1. Choose **Bug report** or **Feature request**.
+1. Describe the problem or idea in **Details**.
+1. Tap **Send by email**. Your email app opens with a draft to
+   `support@plaintxtoffice.com`.
+1. Review the draft and send it from your email app.
+
+The draft includes what you typed plus the app version, Android version, and
+device model. It never includes your learned commands or quiz answers. Nothing
+is sent unless you send it. **Send by email** is unavailable until you type
+some details. If you have no email app, tap **Use the contact page instead**
+to open the developer's website.
+
+On iOS, open **Docs** and tap **Send Feedback** in the **About** section.
+**Report a Problem** and **Suggest a Feature** open a new email to
+`support@plaintxtoffice.com` in your mail app, and **Contact Plain Text
+Office** opens the contact page. In version 1.0.0, **Send Feedback** is in
+**More options** on each tab.
+
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackScreen.kt [FeedbackRoute, FeedbackScreen] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [FEEDBACK_ADDRESS, openFeedbackEmail, deviceSummary] -->
+<!-- Verified from: platform/ios/bash-practice/Views/FeedbackView.swift [FeedbackView] -->
 
 ## Glossary
 

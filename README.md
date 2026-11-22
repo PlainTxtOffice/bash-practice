@@ -8,15 +8,15 @@
 <h1 align="center">Bash Practice</h1>
 
 <p align="center">
-  An app for Android, iPhone, and iPad that helps command-line beginners learn
-  everyday bash commands and operators and test themselves with quick quizzes.
+  An app that helps command-line beginners learn everyday bash commands and
+  operators and test themselves with quick quizzes.
 </p>
 
 <p align="center">
   <a href="https://play.google.com/store/apps/details?id=com.plaintxtoffice.bashpractice"><img src="https://img.shields.io/badge/release-Google%20Play-blue" alt="Android release: Google Play"></a>
   <a href="https://apps.apple.com/app/id6837567763"><img src="https://img.shields.io/badge/release-App%20Store-blue" alt="iOS release: App Store"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Proprietary-informational" alt="License: Proprietary"></a>
-  <a href="docs/USER_MANUAL.md"><img src="https://img.shields.io/badge/platform-Android%20%7C%20iOS-3DDC84" alt="Platforms: Android and iOS"></a>
+  <a href="#download"><img src="https://img.shields.io/badge/platform-Android%20%7C%20iOS-3DDC84" alt="Platforms: Android and iOS"></a>
 </p>
 <!-- rumdl-enable MD033 MD041 -->
 
