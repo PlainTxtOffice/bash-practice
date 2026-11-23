@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-11-22 -->
+<!-- last_updated: 2026-11-23 -->
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
@@ -39,7 +39,8 @@ Android phones and tablets and on iPhone and iPad.
 - Read each command's summary, syntax, examples, and tips, see whether it is
   a shell builtin, a program, or an operator, and copy any example to the
   clipboard.
-- Mark commands as learned and see your progress overall and by category.
+- Mark commands as learned. Learned commands show a check mark in the list,
+  and a quiz can leave them out.
 - Take multiple-choice or type-the-command quizzes of 5 to 30 questions on all
   commands, ones you have not learned yet, ones that need review, or a single
   category.
@@ -48,15 +49,22 @@ Android phones and tablets and on iPhone and iPad.
 - See your score and the commands you missed at the end of each quiz.
 - Practice pipelines: pick the pipeline that does a task, or build it by
   tapping commands into order.
-- Track quiz accuracy, with a **Needs Review** list of the commands you miss
-  most.
-- Read six short guides in the **Docs** tab, on command conventions, paths and
-  wildcards, quoting and variables, piping, redirection, and exit status and
-  chaining, each with worked examples and their output.
-- Type examples into the **Practice Terminal** to see their recorded output.
-  Nothing you type is run.
+- Quiz yourself on the commands you miss most with the **Needs Review**
+  choice.
+- Read six short guides, on command conventions, paths and wildcards, quoting
+  and variables, piping, redirection, and exit status and chaining, each with
+  worked examples and their output.
+- Type examples into the emulator to see their recorded output. Nothing you
+  type is run.
 - Send a bug report or feature request from inside the app.
-- Reset all progress when you want to start over.
+
+The next Android and iOS versions, in development, arrange these features in
+four tabs: **Home**, **Practice**, **Emulator**, and **Docs**. **Docs** holds
+the command list under **Commands** and the guides under **Guides**, with
+**Reset All Progress** under **About**. Pipeline rounds in those versions run
+from 1 to 14 questions, and the app remembers the length you choose. The
+versions available now use **Learn**, **Practice**, **Progress**, and **Docs**
+tabs; the [User Manual](docs/USER_MANUAL.md) lists the differences.
 
 ## App Screenshot
 
@@ -71,7 +79,7 @@ Android phones and tablets and on iPhone and iPad.
 </p>
 <!-- rumdl-enable MD033 -->
 
-The **Learn** tab and a quiz question on Android.
+The **Learn** tab and a quiz question in version 1.1.0 on Android.
 
 ## Download
 
@@ -91,10 +99,12 @@ Send bug reports and feature requests to
 [support@plaintxtoffice.com](mailto:support@plaintxtoffice.com), through the
 [contact page](https://plaintxtoffice.com/contact/), or in
 [GitHub Issues](https://github.com/PlainTxtOffice/bash-practice/issues). In the
-app, **Send feedback** prepares an email to the same address. Find it in
-**More options** (three dots) on any tab, or under **About** in **Docs** on
-Android. On iPhone and iPad, version 1.1.0 moves it under **About** in
-**Docs**.
+app, the feedback screen prepares an email to the same address. In Android
+1.1.0, find **Send feedback** in **More options** (three dots) on any tab or
+under **About** in **Docs**. In iOS 1.0.0 it is in **More options**; iOS 1.1.0
+moves it under **About** in **Docs**. The next Android and iOS versions, in
+development, add a **Send Feedback** button to the **Home** tab and keep it
+under **About** in **Docs**.
 
 ## License
 

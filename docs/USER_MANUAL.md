@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-11-22
+last_updated: 2026-11-23
 version: 6.0.0
 product_versions:
   android: "1.1.0"
@@ -17,17 +17,20 @@ who want to refresh their memory of everyday commands, their options, and the
 operators that join and redirect them.
 
 The app includes a built-in library of 68 commands and operators in ten
-categories. You can read about each one, mark it as learned, take quizzes, and
-follow your progress.
+categories. You can read about each one, mark it as learned, take quizzes,
+practice pipelines, and try examples in an emulator that shows their recorded
+output.
 
 | Item | Details |
 | --- | --- |
 | Platform | Android phones and tablets; iPhone and iPad |
-| Interface | Four tabs for **Learn**, **Practice**, **Progress**, and **Docs** |
+| Interface | Four tabs for **Home**, **Practice**, **Emulator**, and **Docs** (in development; see below) |
 | Version | 1.1.0 on Android. On iOS, 1.0.0 is on the App Store and 1.1.0 is waiting for App Review |
 
 <!-- Verified from: platform/android/app/build.gradle.kts [versionName, minSdk] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [HomeTab, HomeRoute] -->
+<!-- Verified from: platform/ios/bash-practice.xcodeproj/project.pbxproj [MARKETING_VERSION, TARGETED_DEVICE_FAMILY] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeTab.kt [HomeTab] -->
+<!-- Verified from: platform/ios/bash-practice/Views/AppTabs.swift [AppTab, AppTabs] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/CommandLibrary.kt [CommandLibrary.all] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Command.kt [CommandCategory] -->
 
@@ -35,40 +38,39 @@ Bash Practice does not run bash commands or connect to a shell or server. It
 checks your quiz answers on the device.
 
 <!-- Verified from: platform/android/app/src/main/res/values/strings.xml [privacy_device_body] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PrivacyView.swift [PrivacyView] -->
 
-### iOS
+### Interface in Development
 
-Bash Practice 1.1.0 for iPhone and iPad requires iOS 17 or later. Its
-**Learn**, **Practice**, **Progress**, and **Docs** tabs provide the command
-library, multiple-choice and typed quizzes, pipeline practice, a practice
-terminal, on-device progress tracking, and guides. Install it from the
-[App Store](https://apps.apple.com/app/id6837567763). The App Store has
-version 1.0.0; version 1.1.0, described here, is waiting for App Review.
+This manual describes the interface that is in development for the next
+Android and iOS versions: the **Home**, **Practice**, **Emulator**, and
+**Docs** tabs. It is not in Google Play or the App Store yet.
 
-On iOS, each example on a command's page shows its **Output**: what the
-terminal prints when you run it, or a note that it prints nothing. The output
-is a recorded sample; the app never runs commands.
+The versions available now (1.1.0 on Android; 1.0.0 on iOS, with 1.1.0
+waiting for App Review) have the same command library, quizzes, and pipeline
+practice, arranged differently:
 
-The **Docs** tab holds short guides: **Command Conventions**, **Paths and
-Wildcards**, **Quoting and Variables**, **Piping Techniques**, **Redirection**,
-and **Exit Status and Chaining**. Each has worked examples with their output.
-Its **About** section, at the end, opens **Privacy** and **Send Feedback** and
-shows the app version. iOS has no **More options** menu.
+| In this manual | In the versions available now |
+| --- | --- |
+| **Home** tab | Not present; the app opens on the **Learn** tab |
+| **Commands** in the **Docs** tab | The **Learn** tab |
+| **Guides** in the **Docs** tab | The **Docs** tab (Android 1.1.0 and iOS 1.1.0) |
+| **Emulator** tab | **Practice Terminal** in the **Practice** tab (Android 1.1.0 and iOS 1.1.0) |
+| **Send Feedback** on **Home** and under **About** | **More options** (three dots) on each tab on Android and in iOS 1.0.0; under **About** in **Docs** in Android 1.1.0 and iOS 1.1.0 |
 
-To use the practice terminal, open **Practice**, tap **Practice Terminal**, type
-an example from a command page or a guide, and press Return. The terminal shows
-that example's recorded output. For a command it knows but an example it
-doesn't, it lists that command's examples to tap; **Try an Example** fills in a
-random one, and `clear` or **Clear Screen** empties the screen. Nothing you type
-is run.
+Those versions also have a **Progress** tab, which shows learned and quiz
+totals and holds **Reset All Progress**. The interface described here does not
+have that tab; **Reset All Progress** is under **About** in **Docs** >
+**Guides**. Commands you marked as learned and your quiz answers are kept. In
+those versions a pipeline round has 5 to 14 questions, and the length you
+choose is not kept after you close the app.
 
-<!-- Verified from: platform/ios/bash-practice.xcodeproj/project.pbxproj [MARKETING_VERSION, IPHONEOS_DEPLOYMENT_TARGET, TARGETED_DEVICE_FAMILY] -->
-<!-- Verified from: platform/ios/bash-practice/Views/PracticeTabs.swift [PracticeTabs] -->
-<!-- Verified from: platform/ios/bash-practice/Views/ExampleRow.swift [ExampleRow, ExampleOutput] -->
-<!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [DocsView, GuideView] -->
-<!-- Verified from: platform/ios/bash-practice/guides.json -->
-<!-- Verified from: platform/ios/bash-practice/Views/TerminalView.swift [TerminalView] -->
-<!-- Verified from: platform/ios/bash-practice/Practice/PracticeTerminal.swift [PracticeTerminal.reply] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [TabHost] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [guideItems, ResetRow] -->
+<!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [GuideList] -->
+<!-- Verified from: platform/ios/bash-practice/Views/AppTabs.swift [AppTabs] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/data/CommandProgress.kt [CommandProgress] -->
+<!-- Verified from: platform/ios/bash-practice/Progress/ProgressFile.swift [load] -->
 
 ## Installation and Setup
 
@@ -84,6 +86,7 @@ is run.
 <!-- Verified from: platform/android/app/build.gradle.kts [minSdk = 26] -->
 <!-- Verified from: platform/android/app/src/main/AndroidManifest.xml [no permissions declared] -->
 <!-- Verified from: platform/android/app/src/main/res/values/strings.xml [privacy_device_body, privacy_services_body] -->
+<!-- Verified from: platform/ios/bash-practice.xcodeproj/project.pbxproj [IPHONEOS_DEPLOYMENT_TARGET] -->
 
 ### Install on Android
 
@@ -113,43 +116,71 @@ progress starts empty the first time you open it.
 ### Open Bash Practice
 
 1. On your Home screen or in your app list, tap **Bash Practice**.
-1. The app opens on the **Learn** tab, which lists the commands by category.
+1. The app opens on the **Home** tab, which has a card for each of the other
+   tabs.
 
 <!-- Verified from: platform/android/app/src/main/res/values/strings.xml [app_name] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [selectedTab = HomeTab.LEARN] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [selectedTab = HomeTab.HOME] -->
+<!-- Verified from: platform/ios/bash-practice/Views/AppTabs.swift [tab = AppTab.home] -->
 
 ### Close Bash Practice
 
-The app has no quit command. Leave it the way you leave any Android app, such
-as by going to the Home screen. Learned commands and quiz answers are saved as
-you go.
+The app has no quit command. Leave it the way you leave any app on your
+device, such as by going to the Home screen. Learned commands and quiz answers
+are saved as you go.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/detail/CommandDetailViewModel.kt [toggleLearned] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizViewModel.kt [submit] -->
+<!-- Verified from: platform/ios/bash-practice/Views/QuizView.swift [submit] -->
 
 ## Getting Around
 
-The Android app has four tabs. On a phone they appear in a bar at the bottom of
-the screen; on a tablet or other wide window they appear in a rail at the side.
+The app has four tabs.
 
 | Tab | What you find there |
 | --- | --- |
-| **Learn** | The command library, grouped by category, with a search field |
-| **Practice** | Command quizzes, pipeline exercises, and the **Practice Terminal** |
-| **Progress** | Your learned count, quiz accuracy, progress by category, commands that need review, and **Reset All Progress** |
-| **Docs** | Six guides with worked examples, plus privacy information, feedback, and the app version under **About** |
+| **Home** | A card that opens each of the other tabs, and **Send Feedback** |
+| **Practice** | Command quizzes and pipeline exercises |
+| **Emulator** | A prompt where you type examples to see their recorded output |
+| **Docs** | **Commands**, the searchable command library, and **Guides**, six guides with worked examples plus privacy information, feedback, **Reset All Progress**, and the app version under **About** |
 
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [NavigationSuiteScaffold, HomeTab] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/learn/LearnScreen.kt [LearnScreen] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeTab.kt [HomeTab, homeDestinations] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeScreen.kt [PracticeScreen] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/stats/StatsScreen.kt [StatsScreen] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/terminal/TerminalScreen.kt [TerminalRoute] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [DocsSegment, DocsScreen] -->
+<!-- Verified from: platform/ios/bash-practice/Views/AppTabs.swift [AppTabs] -->
+<!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [DocsSegment, DocsView] -->
 
-Each tab has a **More options** menu (three dots) at the top right with
-**Privacy** and **Send feedback**. Tap a command to open its detail screen.
-Use the back arrow at the top left, or the system Back gesture, to return.
+On an Android phone the tabs appear in a bar at the bottom of the screen; on
+a tablet or other wide window they appear in a rail at the side. On iPhone
+and iPad they appear in the tab bar.
 
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [HomeMenu] -->
+A screen you open from a tab, such as a command page or a guide, opens inside
+that tab, and the tabs stay in view. On Android this also applies to quizzes
+and pipeline rounds; on iPhone and iPad those fill the screen until you finish
+or end them. Each tab keeps its place while you use another one.
+
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [FloatingTabBar, TabRail, RailMinWidth, PushedScreen] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/Navigation.kt [MainNavigation, tabEntryProvider] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PracticeView.swift [fullScreenCover] -->
+<!-- Verified from: platform/ios/bash-practice/Views/AppTabs.swift [TabView] -->
+
+The **Home** tab shows the app's name and three cards: **Practice**,
+**Emulator**, and **Docs**. Tap a card to open that tab. Below the cards,
+**Send Feedback** opens the feedback screen.
+
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [HomeScreen, DestinationCard, FeedbackPill] -->
+<!-- Verified from: platform/ios/bash-practice/Views/HomeView.swift [HomeView] -->
+
+In **Docs**, tap **Commands** or **Guides** at the top to switch between the
+command library and the guides. Tap a command or a guide to open it. Use the
+back button at the top left to return. On Android you can also use the system
+Back gesture, which returns to **Home** from the other tabs.
+
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [SegmentedControl] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeTab.kt [afterBack] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/Navigation.kt [MainNavigation] -->
+<!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [Picker] -->
 
 The library uses these categories:
 
@@ -169,76 +200,88 @@ The library uses these categories:
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/CommandLibrary.kt [CommandLibrary.all] -->
 <!-- Verified from: platform/android/app/src/main/res/values/strings.xml [category_*] -->
 
-The app follows your device's light or dark theme. On Android 12 and later it
-also takes its colours from your wallpaper.
+The app follows your device's light or dark appearance.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/ui/theme/Theme.kt [BashPracticeTheme] -->
+<!-- Verified from: platform/ios/bash-practice/Theme/Theme.swift [Theme] -->
 
 ## Everyday Tasks
 
 ### Browse and Search the Command Library
 
-1. Tap the **Learn** tab.
-1. Scroll through the categories, or tap the search field, which shows
-   **Command, operator, or task**.
+1. Tap the **Docs** tab. It opens on **Commands**; if **Guides** is showing,
+   tap **Commands**.
+1. Scroll through the categories, or tap the search field. The empty field
+   shows **Command, operator, or task** on Android and **Commands, aliases, or
+   tasks** on iOS.
 1. Type part of a command's name, another way of writing it, or words from its
    description. The list shows only matching entries.
 1. Tap a command to open it.
 
 To clear the search, tap **Clear search** (the X) in the field. A check mark
 next to a command means you marked it as learned. If nothing matches, the app
-shows **No results for** your search, with a suggestion to check the spelling.
+says there are no results for your search.
 
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/learn/LearnScreen.kt [SearchField, CommandListItem, NoResults] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/learn/LearnViewModel.kt [learnSections] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [commandItems, SearchField, CommandListItem, NoResults] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/CommandListViewModel.kt [commandSections] -->
+<!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [CommandList, CommandRow] -->
+<!-- Verified from: platform/ios/bash-practice/Theme/Components.swift [SearchField] -->
 
 ### Study a Command
 
-The detail screen for a command shows:
+The page for a command shows:
 
-- Its category and kind, such as **Variables & Scripting · Shell builtin**.
-  The kind is **Shell builtin** (part of bash itself), **Program** (a separate
-  program on the system), or **Operator** (symbols that join or redirect
-  commands, such as `|`).
+- Its category and kind. The kind is **Shell builtin** (part of bash itself),
+  **Program** (a separate program on the system), or **Operator** (symbols
+  that join or redirect commands, such as `|`).
 - Its name and a short summary of what it does.
 - **Syntax**, showing its common options.
 - **Also written as**, when bash accepts another spelling, such as `.` for
   `source`.
-- **Examples**, each with an explanation and its recorded **Output**. A silent
-  example displays a note explaining that the command prints nothing on success.
+- **Examples**, each with an explanation and its recorded **Output**: what
+  the terminal prints when you run it, or a note that the command prints
+  nothing when it succeeds. The app never runs commands.
 - **Tip**, for some commands.
-- **Quiz record: X of Y correct**, after you have answered quiz questions
-  about it.
+- On Android, **Quiz record: X of Y correct**, after you have answered quiz
+  questions about it.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/detail/CommandDetailScreen.kt [CommandDetails] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Command.kt [CommandKind, Command.alternatives] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/ui/WorkedExample.kt [WorkedExample, RecordedOutput] -->
+<!-- Verified from: platform/ios/bash-practice/Views/CommandDetailView.swift [CommandDetailView] -->
+<!-- Verified from: platform/ios/bash-practice/Views/ExampleRow.swift [ExampleRow] -->
 
 ### Copy a Command
 
-1. Open a command's detail screen.
-1. Next to the syntax or an example, tap **Copy**.
+1. Open a command's page.
+1. Next to the syntax or an example, tap the copy button.
 1. The text is placed on the clipboard so you can paste it into another app,
    such as a terminal.
 
 Android 13 and later show their own confirmation when text is copied; earlier
-versions show a short **Copied** message. You can also press and hold the text
-to select part of it. Other apps can read text you paste into them.
+versions show a short **Copied** message. Other apps can read text you paste
+into them. Examples in the guides and in quiz feedback have the same copy
+button.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/ui/Components.kt [CodeBlock] -->
 <!-- Verified from: platform/android/app/src/main/res/values/strings.xml [privacy_copy_body] -->
+<!-- Verified from: platform/ios/bash-practice/Theme/Components.swift [CodeBlock] -->
 
 ### Mark a Command as Learned
 
-1. Open a command's detail screen.
+1. Open a command's page.
 1. Tap **Mark as Learned** at the bottom of the screen. The button changes to
-   **Learned**.
-1. To undo it, tap **Learned** again.
+   **Learned** on Android and **Mark as Not Learned** on iOS.
+1. To undo it, tap the button again.
 
-Learned commands show a check mark in the **Learn** list and count toward the
-**Learned** total on the **Progress** tab. If the change cannot be saved, the
-app shows **Couldn't update progress** and leaves your progress unchanged.
+Learned commands show a check mark in the **Commands** list in **Docs**, and
+you can leave them out of a quiz by choosing **Not Yet Learned**. If the
+change cannot be saved, the app shows **Couldn't update progress** on Android
+or **Couldn't save progress** on iOS and leaves your progress unchanged.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/detail/CommandDetailScreen.kt [LearnedButton, SaveFailedDialog] -->
+<!-- Verified from: platform/ios/bash-practice/Views/CommandDetailView.swift [toggleLearned] -->
+<!-- Verified from: platform/ios/bash-practice/BashPracticeApp.swift [AppContent] -->
 
 ### Take a Quiz
 
@@ -246,13 +289,14 @@ app shows **Couldn't update progress** and leaves your progress unchanged.
 1. Under **Quiz Type**, choose a quiz type:
    - **Multiple Choice**: pick the right command from four choices.
    - **Type the Command**: read the description and type the command.
-1. Under **Commands**, tap the button next to **Practice** and choose which
-   commands to include.
-1. Use the down and up arrow buttons next to **Questions** to choose how many
+1. Under **Commands**, tap the **Practice** row and choose which commands to
+   include.
+1. Use the minus and plus buttons next to **Questions** to choose how many
    questions to ask.
 1. Tap **Start Quiz**.
 
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeScreen.kt [ModeOption, ScopePicker, QuestionCountStepper] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeScreen.kt [QuizTypeOption, ScopePicker, CountStepperRow] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PracticeView.swift [PracticeView, scopeRow] -->
 
 | Option | Default | Accepted values |
 | --- | --- | --- |
@@ -261,15 +305,22 @@ app shows **Couldn't update progress** and leaves your progress unchanged.
 | Questions | 10 | 5 to 30, in steps of 5 |
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeViewModel.kt [PracticeSettings, MIN_QUESTIONS, MAX_QUESTIONS, QUESTION_STEP] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PracticeView.swift [count, countRange, countStep] -->
+
+**Needs Review** holds commands you have missed at least once and answer
+correctly less than 70% of the time.
+
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/data/CommandProgress.kt [needsReview] -->
 
 Each question in a quiz is about a different command. If your selection has
 fewer commands than the number of questions, the quiz asks one question per
-command. The **Practice** menu shows how many commands each of the first three
-choices contains. **Start Quiz** is unavailable when the selection is empty,
-and a note below it explains why.
+command. On Android, the **Practice** menu shows how many commands each of the
+first three choices contains. **Start Quiz** is unavailable when the selection
+is empty, and a note below it explains why.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Quiz.kt [QuizBuilder.makeQuestions] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeScreen.kt [scopeTitle, canStart] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PracticeView.swift [CardFooter] -->
 
 The app keeps these choices while it is open, but not after it closes.
 
@@ -278,28 +329,27 @@ The app keeps these choices while it is open, but not after it closes.
 ### Answer Quiz Questions
 
 The quiz shows the question number at the top, such as **1 of 10**, and a
-progress bar. Each question is one of two kinds:
+progress bar. A caption above each question names its kind:
 
-- **Which command does this?** shows a description of what a command does.
-- **Which command would you use to…** shows a task, taken from one of the
-  command's examples.
+- **Command** or **Operator**: the question is a description of what a command
+  or an operator does.
+- **Task**: the question is a task, taken from one of the command's examples.
 
-When the answer is an operator, the question says **operator** instead of
-**command**. In a **Multiple Choice** quiz, the other three choices come from
-the same category when possible. Android task questions use examples led by the
-answer or its other spelling. For an operator task, fill the blank in the
-displayed command. Choices exclude other commands in that example and known
-equivalent answers.
+When the answer to a task question is an operator, the quiz shows the example
+command with the operator replaced by a blank; iOS captions that question
+**Operator**. In a **Multiple Choice** quiz, the other three choices come from
+the same category when possible. Android task questions use examples led by
+the answer or its other spelling. Choices exclude other commands in that
+example and known equivalent answers.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Quiz.kt [QuestionKind, QuizBuilder] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [questionHeading] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [QuestionContent, questionKindLabel] -->
 
 On iOS, a task question uses only an example that starts with the command or one
-of its other spellings, so the command is its answer. For an operator, iOS shows
-the example with the operator replaced by a blank and asks
-**Which operator completes this command?**, and the other choices are operators.
-On iOS, the other choices never include a command that appears in the example,
-or `type` when the answer is `which`, or `printf` when the answer is `echo`.
+of its other spellings, so the command is its answer. For an operator, the
+other choices are operators. On iOS, the other choices never include a command
+that appears in the example, or `type` when the answer is `which`, or `printf`
+when the answer is `echo`.
 
 <!-- Verified from: platform/ios/bash-practice/Practice/Quiz.swift [QuizQuestion.tasks, QuizQuestion.wrongChoices, QuizQuestion.blankedCode] -->
 <!-- Verified from: platform/ios/bash-practice/Views/QuizView.swift [prompt] -->
@@ -309,6 +359,7 @@ is highlighted with a check mark, and a wrong choice you picked is highlighted
 with an X.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [Choices] -->
+<!-- Verified from: platform/ios/bash-practice/Views/QuizView.swift [mark] -->
 
 In a **Type the Command** quiz:
 
@@ -323,22 +374,27 @@ for `test`.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [TypedInput] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Command.kt [Command.matches] -->
+<!-- Verified from: platform/ios/bash-practice/Views/QuizView.swift [typedAnswer] -->
 
-After you answer, the app shows **Correct!** or **Not quite. The answer is**
-followed by the answer, and then an example of the command with its
-explanation. For a task question it also shows the command's summary. Tap
-**Next Question** to continue, or **See Results** after the last question.
+After you answer, the app shows **Correct!** or tells you the answer:
+**Not quite. The answer is** followed by the answer on Android, and **Not
+quite** with the **Answer** on iOS. It then shows an example of the command
+with its explanation. For a task question it also shows the command's summary.
+Tap **Next Question** to continue, or **See Results** after the last question.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [Feedback, bottomBar] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Quiz.kt [QuizQuestion.example] -->
+<!-- Verified from: platform/ios/bash-practice/Views/QuizView.swift [feedback] -->
 
 Each answer is saved as soon as you give it. If it cannot be saved, the app
 shows **Couldn't save your answer**. To leave a quiz early, tap **Close** (the
-X) at the top left or use the system Back gesture; answers you already gave
-stay saved.
+X) at the top left; answers you already gave stay saved. The app asks **End
+this quiz?**; tap **End Quiz** to leave. On Android, the system Back gesture
+asks the same question.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizViewModel.kt [submit] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [QuizRoute, navigationIcon] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [QuizScreen, ConfirmDialog] -->
+<!-- Verified from: platform/ios/bash-practice/Views/QuizView.swift [confirmationDialog] -->
 
 ### Review Your Quiz Results
 
@@ -347,122 +403,130 @@ At the end of a quiz, the **Results** screen shows your score, such as **8 /
 with its summary. Tap **Done** to return to the **Practice** tab.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [QuizResults] -->
+<!-- Verified from: platform/ios/bash-practice/Views/QuizSummary.swift [QuizSummary] -->
 
-### Read a Guide on Android
+### Read a Guide
 
-Open **Docs** and choose a guide. The guides cover command conventions, paths
-and wildcards, quoting and variables, piping, redirection, and exit status and
-chaining. Each section explains a technique and shows worked examples. Tap
-**Copy** beside an example to put the command on the clipboard.
+1. Tap the **Docs** tab, then tap **Guides**.
+1. Tap a guide: **Command Conventions**, **Paths and Wildcards**, **Quoting
+   and Variables**, **Piping Techniques**, **Redirection**, or **Exit Status
+   and Chaining**.
 
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [GuideScreen] -->
+Each section explains a technique and shows worked examples with their
+recorded output. Tap the copy button beside an example to put the command on
+the clipboard.
 
-### Use the Practice Terminal on Android
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [guideItems, GuideScreen] -->
+<!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [GuideList, GuideView] -->
+<!-- Verified from: platform/ios/bash-practice/guides.json -->
 
-1. Open **Practice** and tap **Practice Terminal**.
-1. Type an example from **Learn** or **Docs**, such as `pwd`, or tap
-   **Try an Example** to fill in a random one.
-1. Tap **Run** or press the keyboard’s Go key. For `pwd`, the recorded output is
-   `/home/alex/projects/site`.
-1. If you enter a known command with different arguments, tap one of its
-   suggested examples, then tap **Run**.
-1. Tap **Clear Screen** or enter `clear` to clear the transcript.
+### Use the Emulator
 
-The terminal looks up examples on the device. It never executes input or changes
-files.
+1. Tap the **Emulator** tab.
+1. After the **$** prompt, type an example from **Docs**, such as `pwd`, or
+   tap **Try an Example** (the dice) at the top right to fill in a random one.
+1. Tap **Run**, or press the Go key on the keyboard. For `pwd`, the recorded
+   output is `/home/alex/projects/site`.
+1. If you enter a known command with different arguments, the emulator lists
+   that command's examples. Tap one to fill it in, then tap **Run**.
+1. Tap **Clear Screen** (the eraser) at the top right, or enter `clear`, to
+   empty the screen.
+
+The emulator looks up examples on the device. It never runs what you type and
+never changes files. If you enter something that is not in the command
+library, it tells you to find an example in **Docs**.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/PracticeTerminal.kt [reply] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/terminal/TerminalScreen.kt [TerminalScreen] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/terminal/TerminalScreen.kt [TerminalScreen, TerminalTools, TerminalHistory] -->
+<!-- Verified from: platform/ios/bash-practice/Views/EmulatorView.swift [EmulatorView, EntryView] -->
+<!-- Verified from: platform/ios/bash-practice/Practice/PracticeTerminal.swift [PracticeTerminal.reply] -->
 
 ### Practice Pipelines
 
 A pipeline joins commands with `|` so that each one works on the output of
-the one before it. The **Pipelines** section at the bottom of the **Practice**
-tab has two ways to practice them. Each round asks 10 questions about
-everyday tasks, such as counting the lines of a log file that contain 404.
+the one before it. Each question gives an everyday task, such as counting the
+lines of a log file that contain 404.
 
-- **Pick the Pipeline**: choose the pipeline that does the task from four.
-  Each wrong choice has one command swapped for a likely mistake.
-- **Build the Pipeline**: tap the commands into order. One command is a decoy
-  that the pipeline does not need. Tap a command you placed to take it back
-  out. Once every stage is in place, tap **Check** on Android or **Check
-  Answer** on iPhone.
+1. Tap the **Practice** tab and scroll to **Pipelines**.
+1. Choose how to answer:
+   - **Pick the Pipeline**: choose the pipeline that does the task from four.
+     Each wrong choice has one command swapped for a likely mistake.
+   - **Build the Pipeline**: tap the commands into order. One command is a
+     decoy that the pipeline does not need.
+1. Use the minus and plus buttons next to **Questions** to choose from 1
+   question up to all 14 pipeline exercises. The first round has 10; after
+   that, the app remembers your choice, even after you close it.
+1. Tap **Start Pipeline Quiz**.
+1. For each question, tap a pipeline under **Answer Choices**, or tap
+   commands under **Commands** to place them in **Your Pipeline**. Tap a
+   command you placed to take it back out.
+1. Tap **Check Answer**.
 
 After each answer, the app shows the right pipeline and explains how it
-works. At the end, the results list the pipelines you missed. Pipeline
-answers are not added to your accuracy, answer count, or **Needs Review**
-list. To leave early, tap **Close** on Android or **End Practice** on iPhone.
+works. Tap **Next Question** to continue, or **See Results** after the last
+question. **Pipeline Results** shows your score and lists the pipelines you
+missed under **Pipelines to Review**; tap **Done** to return to **Practice**.
+Pipeline answers are not added to your quiz record or to **Needs Review**.
 
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Pipeline.kt [PipelineQuizBuilder, PipelineLibrary] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/pipeline/PipelineScreen.kt [PipelineBuilder, PipelineFeedback, PipelineResults] -->
-<!-- Verified from: platform/ios/bash-practice/Views/PipelineView.swift [builder, feedback, PipelineSummary] -->
+To leave early, tap **End Practice** at the top left. The app asks **End this
+practice?**; tap **End Practice** again to leave. On Android, the system Back
+gesture asks the same question.
 
-### Check Your Progress
-
-Tap the **Progress** tab to see:
-
-- **Learned**: how many of the 68 commands you marked as learned.
-- **Accuracy**: the percentage of all quiz answers that were correct, or a
-  dash before your first answer.
-- **Answers**: the total number of quiz answers you have given.
-- **By Category**: learned commands in each category, with a progress bar.
-- **Needs Review**: commands you have missed at least once and answer
-  correctly less than 70% of the time, listed with your correct and total
-  answers. The lowest accuracy is listed first. Tap one to open its detail
-  screen.
-
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/stats/StatsScreen.kt [StatsScreen] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/stats/StatsViewModel.kt [statsUiState] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/data/CommandProgress.kt [needsReview, accuracy] -->
-
-### Reset All Progress
-
-1. Tap the **Progress** tab.
-1. Scroll down and tap **Reset All Progress**.
-1. In **Reset all progress?**, tap **Reset**. Tap **Cancel** to keep your
-   progress.
-
-This clears learned commands and quiz history, and it cannot be undone. The
-button is unavailable when there is no progress to clear. If the reset fails,
-the app shows **Couldn't reset progress** and leaves your progress unchanged.
-
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/stats/StatsScreen.kt [confirmingReset, AlertDialog] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/stats/StatsViewModel.kt [canReset, reset] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Pipeline.kt [PipelineQuizBuilder, PipelineLibrary, MIN_PIPELINE_QUESTIONS, MAX_PIPELINE_QUESTIONS, DEFAULT_PIPELINE_QUESTIONS, restoredPipelineQuestionCount] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/data/PracticePreferences.kt [PipelineQuestionCountSetting] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeScreen.kt [PipelineModeOption] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/pipeline/PipelineScreen.kt [PipelineChoices, PipelineBuilder, PipelineFeedback, PipelineResults] -->
+<!-- Verified from: platform/ios/bash-practice/Practice/Pipeline.swift [PipelineSession.questionCountRange, defaultQuestionCount, questionCount] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PracticeView.swift [savedPipelineCount] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PipelineView.swift [questionScreen, builder, feedback, PipelineSummary] -->
 
 ### Read the Privacy Information
 
-1. On any tab, tap **More options** (three dots) at the top right.
-1. Tap **Privacy**.
+1. Tap the **Docs** tab, then tap **Guides**.
+1. Under **About**, at the end of the list, tap **Privacy**.
 1. Read the privacy information. It is available without a network
    connection.
-1. To contact the developer, tap **Contact Plain Text Office**. This opens the
-   developer's website.
 
-You can also open **Privacy** from **Docs** under **About**. Use
-**Full Privacy Policy** to read the published policy in your browser or
-**Send feedback** to open the feedback form.
+At the end of the privacy information, **Send Feedback** opens the feedback
+screen, **Contact Plain Text Office** opens the developer's website, and
+**Full Privacy Policy** opens the published policy in your browser.
 
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [guideItems] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/privacy/PrivacyScreen.kt [PrivacyScreen] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [openContactPage] -->
-
-On iOS, open **Docs** and tap **Privacy** in the **About** section. The
-privacy information shows the names of buttons in bold. At the end, **Send
-Feedback** opens the feedback options, **Contact Plain Text Office** opens the
-developer's website, and **Full Privacy Policy** opens the full privacy policy
-there.
-
+<!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [GuideList] -->
 <!-- Verified from: platform/ios/bash-practice/Views/PrivacyView.swift [PrivacyView] -->
-<!-- Verified from: platform/ios/bash-practice/Views/FeedbackView.swift [FeedbackView] -->
+
+### Reset Your Progress
+
+**Reset All Progress** clears every command you marked as learned and all your
+quiz answers, so you can start over. It cannot be undone.
+
+1. Tap the **Docs** tab, then tap **Guides**.
+1. Under **About**, tap **Reset All Progress**.
+1. When the app asks **Reset all progress?**, tap **Reset All Progress** to
+   confirm, or **Cancel** to keep your progress.
+
+**Reset All Progress** is dimmed when there is nothing to clear. If the reset
+fails, the app says so and your progress is unchanged.
+
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [ResetRow, ConfirmDialog, DocsRoute] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/CommandListViewModel.kt [reset] -->
+<!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [GuideList.resetRow, confirmationDialog] -->
+<!-- Verified from: platform/ios/bash-practice/Progress/ProgressStore.swift [reset] -->
 
 ## Settings and Preferences
 
-Not Applicable.
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt, platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeViewModel.kt -->
+The app has no settings screen. It remembers the number of pipeline questions
+you last chose in **Practice** and uses it the next time you open the app.
+
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeViewModel.kt [PracticeViewModel, stepPipelineQuestionCount] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PracticeView.swift [savedPipelineCount] -->
 
 ## Importing and Exporting
 
 Not Applicable.
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/detail/CommandDetailScreen.kt, platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/stats/StatsScreen.kt -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/detail/CommandDetailScreen.kt, platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt, platform/ios/bash-practice/Views/DocsView.swift -->
 
 ## Commands and Shortcuts
 
@@ -471,27 +535,37 @@ actions.
 
 | Control | Where | What it does |
 | --- | --- | --- |
-| **Learn**, **Practice**, **Progress**, **Docs** | Bottom bar or side rail | Switch between the main screens |
-| **More options** (three dots) | Each tab, top right | Opens **Privacy** and **Send feedback** |
-| Search field | **Learn** | Filters commands by name, other spelling, or description |
-| **Copy** | Command detail | Copies the syntax or an example to the clipboard |
-| **Mark as Learned** / **Learned** | Command detail | Marks or unmarks the command as learned |
-| **Practice Terminal** | **Practice** | Looks up the recorded output of a command or guide example |
+| **Home**, **Practice**, **Emulator**, **Docs** | Tab bar, or side rail on a wide Android window | Switch between the main screens |
+| **Practice**, **Emulator**, **Docs** cards | **Home** | Open that tab |
+| **Send Feedback** | **Home**; **About** under **Guides** in **Docs** | Opens the feedback screen |
+| **Commands** / **Guides** | **Docs**, at the top | Switches between the command library and the guides |
+| Search field | **Commands** in **Docs** | Filters commands by name, other spelling, or description |
+| Copy button | Command page, guides, quiz feedback | Copies the syntax or an example to the clipboard |
+| **Mark as Learned** | Command page | Marks or unmarks the command as learned |
 | **Start Quiz** | **Practice** | Starts a quiz with the chosen options |
+| **Start Pipeline Quiz** | **Practice** | Starts a round of pipeline questions |
 | **Check** | Quiz, **Type the Command** | Checks your typed answer |
-| **Next Question** / **See Results** | Quiz | Moves to the next question or the results |
-| **Close** | Quiz, top left | Leaves the quiz |
-| **Reset All Progress** | **Progress** | Clears learned commands and quiz history after confirmation |
-| **Send by email** | **Send feedback** | Opens a feedback draft in your email app |
+| **Check Answer** | Pipeline question | Checks the pipeline you picked or built |
+| **Next Question** / **See Results** | Quiz and pipeline questions | Moves to the next question or the results |
+| **Close** | Quiz, top left | Leaves the quiz, after asking you to confirm |
+| **End Practice** | Pipeline question, top left | Leaves the pipeline round, after asking you to confirm |
+| **Run** | **Emulator** | Shows the recorded output of the example you typed |
+| **Try an Example** | **Emulator**, top right | Fills in a random example |
+| **Clear Screen** | **Emulator**, top right | Empties the emulator screen |
+| **Privacy** | **About** under **Guides** in **Docs** | Opens the privacy information |
+| **Reset All Progress** | **About** under **Guides** in **Docs** | Clears learned commands and quiz answers, after asking you to confirm |
 
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [HomeTab, HomeMenu] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/learn/LearnScreen.kt [SearchField] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [FloatingTabBar, TabRail, HomeScreen] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [SegmentedControl, SearchField, guideItems] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/ui/Components.kt [CodeBlock] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/detail/CommandDetailScreen.kt [LearnedButton] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeScreen.kt [Start Quiz] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [TypedInput, navigationIcon, bottomBar] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/stats/StatsScreen.kt [Reset All Progress] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackScreen.kt [Send by email] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeScreen.kt [practice_start, practice_pipelines_start] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [TypedInput, NavRow, bottomBar] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/pipeline/PipelineScreen.kt [PipelineScreen] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/terminal/TerminalScreen.kt [TerminalScreen, TerminalTools] -->
+<!-- Verified from: platform/ios/bash-practice/Views/HomeView.swift [HomeView] -->
+<!-- Verified from: platform/ios/bash-practice/Views/EmulatorView.swift [EmulatorView] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PipelineView.swift [PipelineView] -->
 
 ## Your Data Files
 
@@ -502,14 +576,16 @@ open or edit these records by hand, and the app does not show their location.
 | --- | --- | --- |
 | Command library | Included with the app | No |
 | Learned commands and quiz answers for each command | The app's private storage on your device: the `progress.db` database on Android and `progress.json` on iPhone and iPad (see below) | No; change it through the app |
+| The number of pipeline questions you last chose | The app's settings on your device | No; change it in **Practice** |
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/di/AppModule.kt [database, Room.databaseBuilder "progress.db"] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/data/CommandProgress.kt [CommandProgress] -->
 <!-- Verified from: platform/ios/bash-practice/Progress/ProgressFile.swift [fileURL] -->
 
-To remove your records, use **Reset All Progress**, clear the app's storage
-in Android Settings, or uninstall the app. Device backups may keep earlier
-copies. The app has no user-visible log files.
+To remove your learned commands and quiz answers, use **Reset All Progress**
+(see [Reset Your Progress](#reset-your-progress)). On Android, clearing the
+app's storage in Android Settings or uninstalling the app also removes them.
+Device backups may keep earlier copies. The app has no user-visible log files.
 
 <!-- Verified from: platform/android/app/src/main/res/values/strings.xml [privacy_removing_body] -->
 <!-- Verified from: platform/android/app/src/main/AndroidManifest.xml [android:allowBackup] -->
@@ -518,11 +594,12 @@ On iOS, the app saves learned commands and quiz answers in `progress.json` in
 its Application Support folder, which iCloud and computer backups of the device
 include. If that file cannot be read when the app opens, the app renames it
 `progress.corrupt.json`, replacing any earlier copy, starts with empty progress,
-and shows **Saved progress was reset** once. **Reset All Progress** also
-deletes `progress.corrupt.json`, and deleting the app removes both files.
+and shows **Saved progress was reset** once. Deleting the app removes both
+files from the device; earlier backups may still hold older copies.
 
 <!-- Verified from: platform/ios/bash-practice/Progress/ProgressFile.swift [load, corruptCopy, fileURL] -->
 <!-- Verified from: platform/ios/bash-practice/BashPracticeApp.swift [AppContent] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PrivacyView.swift [PrivacyView] -->
 
 ## Troubleshooting
 
@@ -531,22 +608,23 @@ deletes `progress.corrupt.json`, and deleting the app removes both files.
 | **Start Quiz** is unavailable. | The chosen **Practice** selection has no commands, such as **Needs Review** before you have missed any questions. | Choose **All Commands**, **Not Yet Learned**, or a category. |
 | A quiz has fewer questions than you chose. | The selection has fewer commands than the **Questions** value. | Choose a larger selection to get more questions. |
 | A typed answer that looks right is marked wrong. | Typed answers are case-sensitive, or the keyboard changed a character. | Type the command exactly as bash expects it, usually in lowercase. |
-| **Couldn't update progress** appears. | The learned status could not be saved. | Tap **OK** and try again. Your progress was not changed. |
+| The emulator lists examples instead of showing output. | It knows the command but has no recorded output for those arguments. | Tap one of the listed examples, then tap **Run**. |
+| The emulator says what you typed is not in the command library. | The first word is not one of the app's commands. | Look up a command in **Docs** and type one of its examples. |
+| **Couldn't update progress** appears on Android, or **Couldn't save progress** on iOS. | The learned status could not be saved. | Tap **OK** and try again. Your progress was not changed. |
 | **Couldn't save your answer** appears during a quiz. | The answer could not be recorded. | Tap **OK** and continue. That question's result was not recorded. |
-| **Couldn't reset progress** appears. | The reset could not be saved. | Tap **OK** and try again. Your progress was not changed. |
-| **Reset All Progress** is unavailable. | There is no progress to clear. | No action is needed. |
-| **No email app was found. Use the contact page instead.** | No app on the device can open the feedback email. | Tap **Use the contact page instead**, or install an email app. |
-| **No app was found to open the link.** | No browser can open the developer's website. | Install or enable a web browser, then try again. |
+| **No email app was found. Use the contact page instead.** | No app on the Android device can open the feedback email. | Tap **Use the contact page instead**, or install an email app. |
+| **No app was found to open the link.** | No browser on the Android device can open the developer's website. | Install or enable a web browser, then try again. |
 | On iOS, **Saved progress was reset** appears when the app opens. | The saved progress file could not be read, so the app kept it as `progress.corrupt.json` and started with empty progress. | Tap **OK**. Learned commands and quiz answers you add from now on are saved as usual. |
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/practice/PracticeScreen.kt [canStart, practice_nothing_to_review] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Quiz.kt [QuizBuilder.makeQuestions] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Command.kt [Command.matches] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/terminal/TerminalScreen.kt [TerminalHistory] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/detail/CommandDetailScreen.kt [SaveFailedDialog] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/quiz/QuizScreen.kt [SaveFailedDialog] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/stats/StatsScreen.kt [SaveFailedDialog, canReset] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackScreen.kt [FeedbackError] -->
 <!-- Verified from: platform/android/app/src/main/res/values/strings.xml [feedback_no_email_app, open_link_failed] -->
+<!-- Verified from: platform/ios/bash-practice/Views/EmulatorView.swift [EntryView] -->
 <!-- Verified from: platform/ios/bash-practice/BashPracticeApp.swift [AppContent] -->
 <!-- Verified from: platform/ios/bash-practice/Progress/ProgressFile.swift [load] -->
 
@@ -554,8 +632,9 @@ deletes `progress.corrupt.json`, and deleting the app removes both files.
 
 ### Does the app run bash commands?
 
-No. The app does not run bash commands or connect to a shell or server. Try
-the examples in a terminal on Linux, macOS, or another system with bash.
+No. The app does not run bash commands or connect to a shell or server. The
+**Emulator** shows recorded output for the examples in the app. Try commands
+for real in a terminal on Linux, macOS, or another system with bash.
 
 <!-- Verified from: platform/android/app/src/main/res/values/strings.xml [privacy_device_body] -->
 
@@ -563,11 +642,12 @@ the examples in a terminal on Linux, macOS, or another system with bash.
 
 No. The command library is included with the app, and answers are checked on the
 device. **Contact Plain Text Office**, **Use the contact page instead**, and
-**Full Privacy Policy** open your browser. **Send by email** opens your email
-app.
+**Full Privacy Policy** open your browser. **Send by email** on Android, and
+**Report a Problem** and **Suggest a Feature** on iOS, open your email app.
 
 <!-- Verified from: platform/android/app/src/main/AndroidManifest.xml [no INTERNET permission] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [openContactPage, openFeedbackEmail] -->
+<!-- Verified from: platform/ios/bash-practice/Views/FeedbackView.swift [FeedbackView] -->
 
 ### Does capitalization matter in typed answers?
 
@@ -581,15 +661,15 @@ Spaces before and after your answer are ignored.
 A shell builtin, such as `cd`, is part of bash itself. A program, such as
 `grep`, is a separate file that bash finds and runs. An operator, such as `|`
 or `>>`, is not a command at all: it tells bash how to connect commands or
-where to send their output. The detail screen shows which kind each entry is.
+where to send their output. The command's page shows which kind each entry is.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Command.kt [CommandKind] -->
 
-### How does a command get on the Needs Review list?
+### How does a command get into Needs Review?
 
-A command appears there after you miss it at least once and your correct
-answers for it fall below 70%. It leaves the list when your accuracy for it
-reaches 70% or more.
+A command joins the **Needs Review** choice on the **Practice** tab after you
+miss it at least once and your correct answers for it fall below 70%. It
+leaves when your accuracy for it reaches 70% or more.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/data/CommandProgress.kt [needsReview] -->
 
@@ -599,6 +679,7 @@ No. This version contains no developer-run analytics, advertising, or account
 service.
 
 <!-- Verified from: platform/android/app/src/main/res/values/strings.xml [privacy_services_body] -->
+<!-- Verified from: platform/ios/bash-practice/Views/PrivacyView.swift [PrivacyView] -->
 
 ## Feedback
 
@@ -609,18 +690,20 @@ screen in the app:
 
 | Platform | How to open feedback |
 | --- | --- |
-| Android | On any tab, tap **More options** (three dots) at the top right, then **Send feedback**. |
-| iOS | Open **Docs** and tap **Send Feedback** in the **About** section. In version 1.0.0, tap **More options** on any tab, then **Send Feedback**. |
+| Android | On the **Home** tab, tap **Send Feedback**. Or open **Docs**, tap **Guides**, and tap **Send Feedback** under **About**. In version 1.1.0, tap **More options** (three dots) at the top right of any tab, then **Send feedback**. |
+| iOS | On the **Home** tab, tap **Send Feedback**. Or open **Docs**, tap **Guides**, and tap **Send Feedback** under **About**. In version 1.0.0, tap **More options** on any tab, then **Send Feedback**. |
 
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/home/HomeScreen.kt [FeedbackPill] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/docs/DocsScreen.kt [guideItems] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [FEEDBACK_ADDRESS, openContactPage] -->
+<!-- Verified from: platform/ios/bash-practice/Views/HomeView.swift [Send Feedback] -->
 <!-- Verified from: platform/ios/bash-practice/Views/DocsView.swift [Send Feedback] -->
 
 ### Send Feedback from the App
 
 On Android:
 
-1. On any tab, tap **More options** (three dots) at the top right.
-1. Tap **Send feedback**.
+1. On the **Home** tab, tap **Send Feedback**.
 1. Choose **Bug report** or **Feature request**.
 1. Describe the problem or idea in **Details**.
 1. Tap **Send by email**. Your email app opens with a draft to
@@ -633,11 +716,9 @@ is sent unless you send it. **Send by email** is unavailable until you type
 some details. If you have no email app, tap **Use the contact page instead**
 to open the developer's website.
 
-On iOS, open **Docs** and tap **Send Feedback** in the **About** section.
-**Report a Problem** and **Suggest a Feature** open a new email to
-`support@plaintxtoffice.com` in your mail app, and **Contact Plain Text
-Office** opens the contact page. In version 1.0.0, **Send Feedback** is in
-**More options** on each tab.
+On iOS, tap **Send Feedback** on the **Home** tab. **Report a Problem** and
+**Suggest a Feature** open a new email to `support@plaintxtoffice.com` in
+your mail app, and **Contact Plain Text Office** opens the contact page.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackScreen.kt [FeedbackRoute, FeedbackScreen] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [FEEDBACK_ADDRESS, openFeedbackEmail, deviceSummary] -->
@@ -647,11 +728,12 @@ Office** opens the contact page. In version 1.0.0, **Send Feedback** is in
 
 | Term | Meaning |
 | --- | --- |
-| Accuracy | The share of your quiz answers that were correct. |
 | Also written as | Another spelling bash accepts for the same command, such as `.` for `source`. |
+| Emulator | The tab where you type an example from the app and see its recorded output. Nothing you type is run. |
 | Learned | A command you marked with **Mark as Learned**. |
 | Needs Review | Commands you missed at least once and answer correctly less than 70% of the time. |
 | Operator | Symbols such as `\|`, `>`, or `&&` that join commands or redirect their input and output. |
+| Pipeline | Commands joined with `\|` so that each one works on the output of the one before it. |
 | Program | A command that is a separate file on the system, such as `grep`. |
 | Redirection | Sending a command's input or output to or from a file instead of the screen. |
 | Shell builtin | A command that is part of bash itself, such as `cd`. |
@@ -659,4 +741,5 @@ Office** opens the contact page. In version 1.0.0, **Send Feedback** is in
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/Command.kt [CommandKind, Command] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/domain/CommandLibrary.kt [REDIRECTION entries] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/data/CommandProgress.kt [accuracy, needsReview] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/data/CommandProgress.kt [needsReview] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/terminal/TerminalScreen.kt [TerminalRoute] -->
