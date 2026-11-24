@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-11-23 -->
+<!-- last_updated: 2026-11-24 -->
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
@@ -99,10 +99,11 @@ Send bug reports and feature requests to
 [feedback@plaintxtoffice.com](mailto:feedback@plaintxtoffice.com), through the
 [contact page](https://plaintxtoffice.com/contact/), or in
 [GitHub Issues](https://github.com/PlainTxtOffice/bash-practice/issues). In the
-app, the feedback screen prepares an email to the same address. In Android
-1.1.0, find **Send feedback** in **More options** (three dots) on any tab or
-under **About** in **Docs**. In iOS 1.0.0 it is in **More options**; iOS 1.1.0
-moves it under **About** in **Docs**. The next Android and iOS versions, in
+app, the feedback screen prepares an email to the same address, or to
+`support@plaintxtoffice.com` in version 1.1.0 and earlier. In Android 1.1.0,
+find **Send feedback** in **More options** (three dots) on any tab or under
+**About** in **Docs**. In iOS 1.0.0 it is in **More options**; iOS 1.1.0 moves
+it under **About** in **Docs**. The next Android and iOS versions, in
 development, add a **Send Feedback** button to the **Home** tab and keep it
 under **About** in **Docs**.
 

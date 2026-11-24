@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-11-23
+last_updated: 2026-11-24
 version: 6.0.0
 product_versions:
   android: "1.1.0"
@@ -708,7 +708,8 @@ On Android:
 1. Choose **Bug report** or **Feature request**.
 1. Describe the problem or idea in **Details**.
 1. Tap **Send by email**. Your email app opens with a draft to
-   `feedback@plaintxtoffice.com`.
+   `feedback@plaintxtoffice.com`, or to `support@plaintxtoffice.com` in version
+   1.1.0 and earlier.
 1. Review the draft and send it from your email app.
 
 The draft includes what you typed plus the app version, Android version, and
@@ -718,8 +719,9 @@ some details. If you have no email app, tap **Use the contact page instead**
 to open the developer's website.
 
 On iOS, tap **Send Feedback** on the **Home** tab. **Report a Problem** and
-**Suggest a Feature** open a new email to `feedback@plaintxtoffice.com` in
-your mail app, and **Contact Plain Text Office** opens the contact page.
+**Suggest a Feature** open a new email to `feedback@plaintxtoffice.com`
+(`support@plaintxtoffice.com` in version 1.1.0 and earlier) in your mail app,
+and **Contact Plain Text Office** opens the contact page.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackScreen.kt [FeedbackRoute, FeedbackScreen] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackIntents.kt [FEEDBACK_ADDRESS, openFeedbackEmail, deviceSummary] -->
