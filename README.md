@@ -86,7 +86,7 @@ The **Learn** tab and a quiz question in version 1.1.0 on Android.
 | Platform | Download | Notes |
 | --- | --- | --- |
 | Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.bashpractice) | Version 1.1.0. Requires Android 8.0 or later. |
-| iOS | [App Store](https://apps.apple.com/app/id6837567763) | Version 1.0.0; 1.1.0, with the guides and the practice terminal, is waiting for App Review. Requires iOS 17 or later on iPhone or iPad. |
+| iOS | [App Store](https://apps.apple.com/app/id6837567763) | Version 1.1.0. Requires iOS 17 or later on iPhone or iPad. |
 
 ## User Manual
 
@@ -102,10 +102,9 @@ Send bug reports and feature requests to
 app, the feedback screen prepares an email to the same address, or to
 `support@plaintxtoffice.com` in version 1.1.0 and earlier. In Android 1.1.0,
 find **Send feedback** in **More options** (three dots) on any tab or under
-**About** in **Docs**. In iOS 1.0.0 it is in **More options**; iOS 1.1.0 moves
-it under **About** in **Docs**. The next Android and iOS versions, in
-development, add a **Send Feedback** button to the **Home** tab and keep it
-under **About** in **Docs**.
+**About** in **Docs**. In iOS 1.1.0 it is under **About** in **Docs**. The next
+Android and iOS versions, in development, add a **Send Feedback** button to the
+**Home** tab and keep it under **About** in **Docs**.
 
 ## License
 

@@ -25,7 +25,7 @@ output.
 | --- | --- |
 | Platform | Android phones and tablets; iPhone and iPad |
 | Interface | Four tabs for **Home**, **Practice**, **Emulator**, and **Docs** (in development; see below) |
-| Version | 1.1.0 on Android. On iOS, 1.0.0 is on the App Store and 1.1.0 is waiting for App Review |
+| Version | 1.1.0 on Android and iOS |
 
 <!-- Verified from: platform/android/app/build.gradle.kts [versionName, minSdk] -->
 <!-- Verified from: platform/ios/bash-practice.xcodeproj/project.pbxproj [MARKETING_VERSION, TARGETED_DEVICE_FAMILY] -->
@@ -46,9 +46,8 @@ This manual describes the interface that is in development for the next
 Android and iOS versions: the **Home**, **Practice**, **Emulator**, and
 **Docs** tabs. It is not in Google Play or the App Store yet.
 
-The versions available now (1.1.0 on Android; 1.0.0 on iOS, with 1.1.0
-waiting for App Review) have the same command library, quizzes, and pipeline
-practice, arranged differently:
+The versions available now (1.1.0 on Android and iOS) have the same command
+library, quizzes, and pipeline practice, arranged differently:
 
 | In this manual | In the versions available now |
 | --- | --- |
@@ -56,7 +55,7 @@ practice, arranged differently:
 | **Commands** in the **Docs** tab | The **Learn** tab |
 | **Guides** in the **Docs** tab | The **Docs** tab (Android 1.1.0 and iOS 1.1.0) |
 | **Emulator** tab | **Practice Terminal** in the **Practice** tab (Android 1.1.0 and iOS 1.1.0) |
-| **Send Feedback** on **Home** and under **About** | **More options** (three dots) on each tab on Android and in iOS 1.0.0; under **About** in **Docs** in Android 1.1.0 and iOS 1.1.0 |
+| **Send Feedback** on **Home** and under **About** | **More options** (three dots) on each tab on Android; under **About** in **Docs** on Android and iOS |
 
 Those versions also have a **Progress** tab, which shows learned and quiz
 totals and holds **Reset All Progress**. The interface described here does not
