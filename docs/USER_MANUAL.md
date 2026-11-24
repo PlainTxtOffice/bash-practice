@@ -505,7 +505,8 @@ quiz answers, so you can start over. It cannot be undone.
 1. Tap the **Docs** tab, then tap **Guides**.
 1. Under **About**, tap **Reset All Progress**.
 1. When the app asks **Reset all progress?**, tap **Reset All Progress** to
-   confirm, or **Cancel** to keep your progress.
+   confirm. To keep your progress, tap **Cancel** on Android. On iPhone and
+   iPad, tap **Cancel** if the prompt shows it, or tap outside the prompt.
 
 **Reset All Progress** is dimmed when there is nothing to clear. If the reset
 fails, the app says so and your progress is unchanged.
@@ -684,7 +685,7 @@ service.
 ## Feedback
 
 To report a bug or request a feature, email
-[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com), use the
+[feedback@plaintxtoffice.com](mailto:feedback@plaintxtoffice.com), use the
 contact page at <https://plaintxtoffice.com/contact/>, or use the feedback
 screen in the app:
 
@@ -707,7 +708,7 @@ On Android:
 1. Choose **Bug report** or **Feature request**.
 1. Describe the problem or idea in **Details**.
 1. Tap **Send by email**. Your email app opens with a draft to
-   `support@plaintxtoffice.com`.
+   `feedback@plaintxtoffice.com`.
 1. Review the draft and send it from your email app.
 
 The draft includes what you typed plus the app version, Android version, and
@@ -717,7 +718,7 @@ some details. If you have no email app, tap **Use the contact page instead**
 to open the developer's website.
 
 On iOS, tap **Send Feedback** on the **Home** tab. **Report a Problem** and
-**Suggest a Feature** open a new email to `support@plaintxtoffice.com` in
+**Suggest a Feature** open a new email to `feedback@plaintxtoffice.com` in
 your mail app, and **Contact Plain Text Office** opens the contact page.
 
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/bashpractice/feature/feedback/FeedbackScreen.kt [FeedbackRoute, FeedbackScreen] -->

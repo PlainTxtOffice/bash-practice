@@ -96,7 +96,7 @@ troubleshooting.
 ## Feedback
 
 Send bug reports and feature requests to
-[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com), through the
+[feedback@plaintxtoffice.com](mailto:feedback@plaintxtoffice.com), through the
 [contact page](https://plaintxtoffice.com/contact/), or in
 [GitHub Issues](https://github.com/PlainTxtOffice/bash-practice/issues). In the
 app, the feedback screen prepares an email to the same address. In Android
